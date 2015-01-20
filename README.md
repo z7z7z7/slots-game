@@ -1,2 +1,2 @@
 # slots-game
-slots done in prolog 
+slots machine done in prolog 
