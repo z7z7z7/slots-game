@@ -34,57 +34,57 @@ win_func(paint):-
 	  fail.
 
 win_func(paint):-
-  pen(2,rgb(147,60,45)), 
-  brush(rgb(147,60,45)), 
-  rect(100,0,320,130),
-  rect(100, 250, 320, 350),
-  rect(0, 0, 100, 350),
-  rect(320, 0, 420, 350),
-  pen(1,rgb(0,0,0)),
-  line(90,190,330,190),
-  pen(5,rgb(0,0,0)),
-  line(90,120,90,260,330,260,330,120,90,120).
+	 pen(2,rgb(147,60,45)), 
+	 brush(rgb(147,60,45)), 
+  	 rect(100,0,320,130),
+	 rect(100, 250, 320, 350),
+  	 rect(0, 0, 100, 350),
+	 rect(320, 0, 420, 350),
+	 pen(1,rgb(0,0,0)),
+	 line(90,190,330,190),
+  	 pen(5,rgb(0,0,0)),
+	 line(90,120,90,260,330,260,330,120,90,120).
 
 button_func(press):-
-  G_Flag =:= 0, 
-  set_text("Stop", _),
-  for(I, 0, 2),
-    speed(I) := 10+random(20),write(speed(I)+nl),
-  fail.
+	 G_Flag =:= 0, 
+	 set_text("Stop", _),
+  	 for(I, 0, 2),
+    	 speed(I) := 10+random(20),write(speed(I)+nl),
+  	 fail.
 
 button_func(press):-
-  G_Flag =:= 1, 
-  set_text("...", _),
-  fail.
+	 G_Flag =:= 1, 
+  	 set_text("...", _),
+	 fail.
 
 button_func(press):-
-  G_Flag =:= 2, 
-  set_text("Start", _),
-  fail.
+	 G_Flag =:= 2, 
+    	 set_text("Start", _),
+	 fail.
 
 button_func(press):-
-  G_Flag := (G_Flag+1) mod 3. 
+	 G_Flag := (G_Flag+1) mod 3. 
 
 time_func(end) :-
-  move,
-  delay,
-  update_window(_, rect(0, 0, 320, 300)).
+	move,
+	delay,
+  	update_window(_, rect(0, 0, 320, 300)).
 
 delay :-
-  G_Flag =:= 2, 
-  for(I, 0, 2),
-    speed(I) := speed(I)-random(3),
-    (speed(I)<0 -> (y(I)=:=0 -> speed(I) := 0 else speed(I) := 1)),
-  fail.
+	G_Flag =:= 2, 
+  	for(I, 0, 2),
+	 speed(I) := speed(I)-random(3),
+	 (speed(I)<0 -> (y(I)=:=0 -> speed(I) := 0 else speed(I) := 1)),
+	 fail.
 delay.
 
 move:-
-  for(I, 0, 2),
-	y(I) := y(I)+speed(I),
-	(y(I) >= 60 ->
+	 for(I, 0, 2),
+	  y(I) := y(I)+speed(I),
+          (y(I) >= 60 ->
 	  y(I) := y(I) - 60,
 	  i(I) := (i(I)-1) mod 7
-     ),
+          ),
 	fail.
 move.
 
